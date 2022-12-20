@@ -9,6 +9,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.gta.domain.model.AvailableDate
 import com.gta.domain.model.InsuranceOption
+import com.gta.domain.model.PaymentOption
 import com.gta.domain.model.UCMCResult
 import com.gta.domain.model.toPair
 import com.gta.domain.model.toPairList
@@ -125,14 +126,25 @@ class ReservationFragment :
     private fun setUpRadioGroup() {
         binding.rgReservationInsuranceOptions.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.rg_reservation_insurance_option_1 -> {
+                R.id.rg_reservation_insurance_option_low -> {
                     viewModel.setInsuranceOption(InsuranceOption.LOW)
                 }
-                R.id.rg_reservation_insurance_option_2 -> {
+                R.id.rg_reservation_insurance_option_midium -> {
                     viewModel.setInsuranceOption(InsuranceOption.MEDIUM)
                 }
-                R.id.rg_reservation_insurance_option_3 -> {
+                R.id.rg_reservation_insurance_option_high -> {
                     viewModel.setInsuranceOption(InsuranceOption.HIGH)
+                }
+            }
+        }
+
+        binding.rgReservationPaymentOptions.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rg_reservation_payment_option_credit_card -> {
+                    viewModel.setPaymentOption(PaymentOption.CREDIT_CARD)
+                }
+                R.id.rg_reservation_payment_option_phone -> {
+                    viewModel.setPaymentOption(PaymentOption.PHONE)
                 }
             }
         }
