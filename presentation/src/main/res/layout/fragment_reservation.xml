@@ -145,7 +145,7 @@
                     android:id="@+id/tv_reservation_fee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{@string/price_format(vm.basePrice ?? 0)}"
+                    android:text="@{@string/price_format(vm.basePrice)}"
                     android:textAppearance="@style/Body"
                     app:layout_constraintEnd_toEndOf="@id/gl_reservation_end"
                     app:layout_constraintTop_toTopOf="@id/tv_reservation_title_fee"
@@ -181,19 +181,19 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_reservation_title_insurance_fee">
 
                     <RadioButton
-                        android:id="@+id/rg_reservation_insurance_option_1"
+                        android:id="@+id/rg_reservation_insurance_option_low"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/insurance_option_1" />
 
                     <RadioButton
-                        android:id="@+id/rg_reservation_insurance_option_2"
+                        android:id="@+id/rg_reservation_insurance_option_midium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/insurance_option_2" />
 
                     <RadioButton
-                        android:id="@+id/rg_reservation_insurance_option_3"
+                        android:id="@+id/rg_reservation_insurance_option_high"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/insurance_option_3" />
@@ -225,7 +225,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_small"
                     android:layout_marginBottom="48dp"
-                    android:onCheckedChanged="@{() -> vm.setIsPaymentOptionChecked(true)}"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/gl_reservation_end"
@@ -233,13 +232,13 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_reservation_title_payment_option">
 
                     <RadioButton
-                        android:id="@+id/rg_reservation_payment_option_1"
+                        android:id="@+id/rg_reservation_payment_option_credit_card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/payment_option_1" />
 
                     <RadioButton
-                        android:id="@+id/rg_reservation_payment_option_2"
+                        android:id="@+id/rg_reservation_payment_option_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/payment_option_2" />
@@ -268,7 +267,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_medium"
-            android:text="@{@string/price_format(vm.totalPrice ?? 0L)}"
+            android:text="@{@string/price_format(vm.totalPrice)}"
             android:textAppearance="@style/Title"
             android:textColor="@color/primaryColor"
             app:layout_constraintBottom_toBottomOf="@id/tv_reservation_title_total_payment"
@@ -282,7 +281,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_medium"
-            android:enabled="@{vm.reservationDate != null &amp;&amp; vm.insuranceOption != null &amp;&amp; vm.isPaymentOptionChecked}"
+            android:enabled="@{vm.reservationDate != null &amp;&amp; vm.insuranceOption != null &amp;&amp; vm.paymentOption != null}"
             android:onClick="@{() -> vm.createReservation()}"
             android:text="@string/action_pay"
             app:layout_constraintBottom_toBottomOf="parent"
